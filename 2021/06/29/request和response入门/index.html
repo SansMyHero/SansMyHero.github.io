@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="javaScript笔记, Sans`s Blog">
+    <meta name="keywords" content="request和response入门, Sans`s Blog">
     <meta name="description" content="向前只是为了不孤独。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>javaScript笔记 | Sans`s Blog</title>
+    <title>request和response入门 | Sans`s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -273,12 +273,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">javaScript笔记</h1>
+                    <h1 class="description center-align post-title">request和response入门</h1>
                 </div>
             </div>
         </div>
@@ -392,13 +392,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">前端</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -410,28 +406,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-22
+                    2021-06-29
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-06-25
+                    2021-06-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    916
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    3 分
                 </div>
                 
 
@@ -446,232 +442,187 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="JavaScript基础"><a href="#JavaScript基础" class="headerlink" title="JavaScript基础"></a>JavaScript基础</h1><h3 id="1-数据类型"><a href="#1-数据类型" class="headerlink" title="1.数据类型"></a>1.数据类型</h3><h4 id="基本-值-类型"><a href="#基本-值-类型" class="headerlink" title="基本(值)类型"></a>基本(值)类型</h4><ul>
-<li><p>String：任意字符串</p>
-</li>
-<li><p>Number：任意数字</p>
-</li>
-<li><p>boolean：true/false</p>
-</li>
-<li><p>undefined：undefined</p>
-</li>
-<li><p>null：null</p>
-</li>
+                <h5 id="request和response对象的原理"><a href="#request和response对象的原理" class="headerlink" title="request和response对象的原理"></a><strong>request和response对象的原理</strong></h5><h4 id="request入门"><a href="#request入门" class="headerlink" title="request入门"></a>request入门</h4><ol>
+<li>tomcat服务器会根据请求url中的资源路径，去创建对应的Servlet实现类对象。</li>
+<li>tomcat服务器，会创建request和response对象，requset对象中封装请求消息数据。</li>
+<li>tomcat将request和response两个对象传递给service方法，并调用service方法。</li>
+<li>程序员，通过request对象获取请求消息数据，可以通过response对象设置响应消息数据。</li>
+<li>服务器再给浏览器做出响应之前，会从response对象中拿程序员设置的的响应消息数据。</li>
+</ol>
+<h5 id="requset对象继承体系结构"><a href="#requset对象继承体系结构" class="headerlink" title="requset对象继承体系结构"></a><strong>requset对象继承体系结构</strong></h5><p>ServletRequset –接口</p>
+<p>​            |    继承</p>
+<p>HttpServletRequset –接口</p>
+<p>​            |    实现</p>
+<p>org.apache.catalina.connector.RequsetFacade类(由tomcat实现)</p>
+<h5 id="request功能"><a href="#request功能" class="headerlink" title="request功能"></a><strong>request功能</strong></h5><ul>
+<li>获取请求消息数据</li>
 </ul>
-<h4 id="对象-引用-类型"><a href="#对象-引用-类型" class="headerlink" title="对象(引用)类型"></a>对象(引用)类型</h4><ul>
-<li><p>Object：任意对象</p>
-</li>
-<li><p>Function：一种特别的对象（可以执行）</p>
-</li>
-<li><p>Array：一种特别的对象（数值下标，内部数据是有序的）</p>
-</li>
-<li><p>类型也为一个对象（类型对象） 根据类型创建的对象叫实例对象</p>
-</li>
-</ul>
-<h4 id="判断类型"><a href="#判断类型" class="headerlink" title="判断类型"></a>判断类型</h4><h5 id="typeof："><a href="#typeof：" class="headerlink" title="typeof："></a><strong>typeof：</strong></h5><ul>
-<li><p>​    判断返回值为字符串，因此使用为:typeof a===’undefined’</p>
-</li>
-<li><p>​    可以判断:undefined、数值、布尔值、字符串</p>
-</li>
-<li><p>​    不能判断:Object与null（typeof null值 返回的字符串为Object） Object与Array（typeof Array对象 返回值为Object）</p>
-</li>
-</ul>
-<h5 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof:"></a><strong>instanceof:</strong></h5><ul>
-<li>​    判断对象（具体）的类型</li>
-</ul>
-<h5 id><a href="#" class="headerlink" title="===:"></a><strong>===:</strong></h5><ul>
-<li><p>​    可以判断:undefined、null（判断的为值与类型是否相等,且默认undefined===null）</p>
-</li>
-<li><p>​    ps:==进行数字与字符串比较时，会将字符串转化为数字再进行比较</p>
-</li>
-</ul>
-<h4 id="拓展"><a href="#拓展" class="headerlink" title="拓展:"></a>拓展:</h4><h5 id="undefined和null的区别"><a href="#undefined和null的区别" class="headerlink" title="undefined和null的区别:"></a>undefined和null的区别:</h5><ul>
-<li>undefined代表定义未赋值</li>
-<li>null代表定义且赋了值 但值为null</li>
-</ul>
-<h5 id="什么时候使用null"><a href="#什么时候使用null" class="headerlink" title="什么时候使用null:"></a>什么时候使用null:</h5><ul>
-<li>初始赋值时:表明该变量为一个对象时,可以使用null初始赋值占位</li>
-<li>结束前:让变量成为垃圾对象（被回收）</li>
-</ul>
-<h5 id="严格区分变量类型和数据类型："><a href="#严格区分变量类型和数据类型：" class="headerlink" title="严格区分变量类型和数据类型："></a>严格区分变量类型和数据类型：</h5><p>数据的类型</p>
+<ol>
+<li><p>​    获取请求行数据</p>
 <ul>
-<li>基本类型：保存的就是基本类型、数据</li>
-<li>对象类型</li>
+<li>获取请求方式：GET<ul>
+<li>String getMethod()</li>
 </ul>
-<p>变量的类型（变量内存值的类型）</p>
+</li>
+<li>获取虚拟目录：/day14<ul>
+<li>String getContextPath()</li>
+</ul>
+</li>
+<li>获取Servlet路径：/demo1<ul>
+<li>String getServlePath()</li>
+</ul>
+</li>
+<li>获取get方式请求参数：name=zhangsan<ul>
+<li>getQueryString()</li>
+</ul>
+</li>
+<li>获取请求的uri：/day14/demo1<ul>
+<li>String getRequestURI()：统一资源标识符</li>
+<li>StringBuffer getRequestURL()：ton</li>
+</ul>
+</li>
+<li>获取协议及版本号：HTTP/1.1<ul>
+<li>String getProtocol()</li>
+</ul>
+</li>
+<li>获取客户机的ip地址（ip6）:<ul>
+<li>String getRemoteAddr()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>​    获取请求头数据</p>
 <ul>
-<li>基本类型：保存的就是基本类型、数据</li>
-<li>引用类型：保存的为地址值（变量对堆内存中对象地址值的引用）</li>
+<li>方法：<ul>
+<li>String getHeader(String name)：通过请求头的名称 获取请求头的值</li>
+<li>getHearderNames()：获取所有的请求头名称</li>
 </ul>
-<h3 id="2-内存"><a href="#2-内存" class="headerlink" title="2.内存"></a>2.内存</h3><h4 id="什么是数据？"><a href="#什么是数据？" class="headerlink" title="什么是数据？"></a><strong>什么是数据？</strong></h4><ul>
-<li>存储在内存中代表特点信息的二进制</li>
-<li>具有可读写可传递的基本特性</li>
-<li>程序中所有操作的目标都是数据</li>
-</ul>
-<h4 id="什么是内存？"><a href="#什么是内存？" class="headerlink" title="什么是内存？"></a><strong>什么是内存？</strong></h4><ul>
-<li><p>内存是内存条通电后产生可存储数据的空间（临时的）</p>
-</li>
-<li><p>每一块小内存存储着两个数据（内部存储的数据、地址值数据）</p>
-</li>
-<li><p>栈：存储全局变量、局部变量</p>
-</li>
-<li><p>堆：存储对象（函数名为一个变量名在栈空间中）</p>
 </li>
 </ul>
-<h4 id="什么是变量？"><a href="#什么是变量？" class="headerlink" title="什么是变量？"></a><strong>什么是变量？</strong></h4><ul>
-<li><p>可变化的量，由变量名和变量值组成</p>
 </li>
-<li><p>每个可变的量都在内存区占着一快小内存，变量名用来查找对应的内存，变量值就是内存中保存的数据</p>
+<li><p>​    获取请求体数据</p>
+<ol>
+<li><p>请求体:只有POST请求中，才有请求体，在请求体中封装了POST请求的请求参数</p>
+</li>
+<li><p>步骤：</p>
+<ol>
+<li>获取流对象<ul>
+<li>BufferedReader getReader()：获取字符输入流</li>
+<li> ServletInputStream getInputStream()：获取字节输入流</li>
+</ul>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>再从流当中获取数据</p>
+</li>
+</ol>
+<h5 id="其它功能："><a href="#其它功能：" class="headerlink" title="其它功能："></a><strong>其它功能：</strong></h5><ol>
+<li>获取请求参数通用方式<ul>
+<li>String getParameter(String name)：根据参数名称获取参数值</li>
+<li>String[] getParameterValues(String name)：根据参数名称获取参数值的数组</li>
+<li>Enumeration&lt;String&gt; getParameterNames()：获取所有请求参数的名称</li>
+<li>Map&lt;String,String[]&gt; getParameterMap()：获取所有参数键值对的map集合</li>
+</ul>
+</li>
+<li>请求转发：一种在服务器内部的资源跳转方式<ul>
+<li>步骤:<ul>
+<li>通过request对象获取请求转发器对象：RequestDispatcher getRequestDispatcher(String path)</li>
+<li>使用forward(ServletRequest request,ServletResponse response)方法进行转发</li>
+</ul>
+</li>
+<li>特点<ul>
+<li>转发时浏览器地址路径不发生变化</li>
+<li>只能转发到当前服务器的内部资源中</li>
+<li>转发是一次请求</li>
+</ul>
 </li>
 </ul>
-<h4 id="内存、数据、变量三者之间的关系"><a href="#内存、数据、变量三者之间的关系" class="headerlink" title="内存、数据、变量三者之间的关系"></a><strong>内存、数据、变量三者之间的关系</strong></h4><ul>
-<li><p>内存是用来存储数据的临时空间（相比硬盘读写快）</p>
 </li>
-<li><p>变量是内存的标识（目的就是对内存中的数据进行操作:读、写）</p>
+<li>共享数据<ul>
+<li>域对象：一个有作用范围的对象，可以在访问内共享数据</li>
+<li>request域 ：代表一次请求的范围，一般用于请求转发的多个资源中共享数据<ul>
+<li>方法:<ul>
+<li>setAttribute(String name,Object obj)：存储数据</li>
+<li>Object getAttribute(String name)：通过键获取数据</li>
+<li>removeAttribute(String name)：通过键名移除键值对</li>
+</ul>
 </li>
 </ul>
-<h4 id="关于引用变量的一些问题"><a href="#关于引用变量的一些问题" class="headerlink" title="关于引用变量的一些问题"></a><strong>关于引用变量的一些问题</strong></h4><h5 id="1-两个引用变量指向同一对象"><a href="#1-两个引用变量指向同一对象" class="headerlink" title="1.两个引用变量指向同一对象"></a><strong>1.两个引用变量指向同一对象</strong></h5><p><code>var a=&#123;name:&quot;Tom&quot;&#125;;</code><br><code>var b=a;</code><br><code>console.log(b.name);//Tom</code><br><code>function fn(obj)&#123;</code><br>    <code>obj.name=&quot;Bob&quot;</code><br><code>&#125;</code><br><code>fn(a)</code><br><code>console.log(b.name);//Bob</code></p>
-<p><strong>原因：</strong></p>
+</li>
+</ul>
+</li>
+<li>获取ServletContext<ul>
+<li>ServletContext getServletContext()</li>
+</ul>
+</li>
+</ol>
+<h5 id="解决乱码问题"><a href="#解决乱码问题" class="headerlink" title="解决乱码问题"></a><strong>解决乱码问题</strong></h5><ul>
+<li>get方式：tomcat 8 已经将get方式的乱码问题解决</li>
+<li>post方式：会乱码<ul>
+<li>解决：设置流的字符集：request.setCharacterEncoding(“utf-8”)</li>
+</ul>
+</li>
+</ul>
+<h5 id="拓展"><a href="#拓展" class="headerlink" title="拓展:"></a>拓展:</h5><ul>
+<li><p>BeanUtils的基本使用:</p>
 <ul>
-<li><p>var b=a时只是将a的<strong>内存内容（只不过内存内容为一个地址值）</strong>保存到b中</p>
-</li>
-<li><p>而fn(a)只是将a做为<strong>实参</strong>赋值给obj对象（当然赋的值也是内存内容）</p>
-</li>
-<li><p>因此<strong>三个变量引用的都为同一个对象的地址值进行操作</strong></p>
-</li>
+<li>获取请求参数Map集合</li>
+<li>创建JavaBean实例对象</li>
+<li>调用:BeanUtils.populate(Object bean,Map properties)</li>
 </ul>
-<hr>
-<h5 id="2-两个引用变量指向不同对象"><a href="#2-两个引用变量指向不同对象" class="headerlink" title="2.两个引用变量指向不同对象"></a><strong>2.两个引用变量指向不同对象</strong></h5><p><code>var a=&#123;age:12&#125;</code><br><code>var b=a;</code><br><code>var a=&#123;name:&quot;Bob&quot;,age:14&#125;</code><br><code>console.log(b.age,a.age)//12 14</code><br><code>function fn(obj) &#123;</code><br>    <code>obj=&#123;age:15&#125;</code><br><code>&#125;</code><br><code>fn(a)</code><br><code>console.log(a.age)//14</code></p>
-<p><strong>原因:</strong></p>
+</li>
+<li><p>JavaBean：标准的Java类</p>
 <ul>
-<li><p><strong>当对象引用发生改变时 被引用对象和引用对象不是同一个对象</strong></p>
-</li>
-<li><p>fn<strong>函数</strong>执行完后内部的局部变量就会<strong>自动释放</strong>，一旦自动释放之后</p>
-</li>
-<li><p>obj对象就会成为垃圾对象，<strong>因此调用a时调用的是变量值为 {name:”Bob”,age:14} 的对象</strong></p>
-</li>
-<li><p>(说白了就是obj和a存储的不是同一个对象地址值 因此obj影响不了a)</p>
-</li>
-<li><p><strong>3.在js调用函数时传递变量参数时，是值传递还是引用传递？</strong></p>
-</li>
-<li><p>答：可能是值传递也可能是，引用传递（地址值）,取决于参数是否为对象</p>
-</li>
-</ul>
-<h4 id="JS引擎管理内存的方式"><a href="#JS引擎管理内存的方式" class="headerlink" title="JS引擎管理内存的方式"></a>JS引擎管理内存的方式</h4><h5 id="1-内存生命周期"><a href="#1-内存生命周期" class="headerlink" title="1.内存生命周期"></a><strong>1.内存生命周期</strong></h5><ul>
-<li>分配小内存空间，得到它的使用权</li>
-<li>存储数据，可以反复进行操作</li>
-<li>释放小内存空间</li>
-</ul>
-<h5 id="2-释放内存"><a href="#2-释放内存" class="headerlink" title="2.释放内存"></a><strong>2.释放内存</strong></h5><ul>
-<li>局部变量:函数执行完自动释放</li>
-<li>对象:成为垃圾对象–&gt;垃圾回收器回收</li>
-</ul>
-<h3 id="3-对象"><a href="#3-对象" class="headerlink" title="3.对象"></a>3.对象</h3><h4 id="什么是对象？"><a href="#什么是对象？" class="headerlink" title="什么是对象？"></a><strong>什么是对象？</strong></h4><ul>
-<li>多个数据的封装体（集合体）</li>
-<li>用来保存多个数据的容器</li>
-<li>一个对象代表现实中的一个事物，是该事物在编程中的抽象</li>
-</ul>
-<h4 id="为什么要用对象？"><a href="#为什么要用对象？" class="headerlink" title="为什么要用对象？"></a><strong>为什么要用对象？</strong></h4><ul>
-<li>统一管理多个数据</li>
-</ul>
-<h4 id="对象的组成"><a href="#对象的组成" class="headerlink" title="对象的组成"></a><strong>对象的组成</strong></h4><ul>
-<li><strong>属性：</strong></li>
-<li>由属性名（字符串）和属性值（任意类型）组成</li>
-<li>代表现实事物的状态数据</li>
-<li><strong>方法：</strong></li>
-<li>一种特殊的属性（属性值是方法）</li>
-<li>代表事物的行为</li>
-</ul>
-<h4 id="如何访问对象内部数据"><a href="#如何访问对象内部数据" class="headerlink" title="如何访问对象内部数据"></a><strong>如何访问对象内部数据</strong></h4><ul>
-<li><p>.属性名：编码简单，有时不能用</p>
-</li>
-<li><p>[‘属性名’]：编码麻烦，能通用</p>
-<p>​    <strong>使用场景:</strong></p>
-<p>​        1.当属性名包含特殊符号：- 空格时可以使用，而上者不行</p>
-<p>​        2.当变量名不确定时,如:</p>
-<p>​                                <code>var p=&#123;name:&#39;yanghan&#39;&#125;;</code></p>
-<p>​                                <code>var c=&#39;name&#39;;</code></p>
-<p>​                                <code>p.c;//无法获取p的属性yanghan,同时输出的为undefined</code></p>
-<p>​                                <code>p[c];//能获取p的属性yanghan</code></p>
-</li>
-</ul>
-<h3 id="4-函数"><a href="#4-函数" class="headerlink" title="4.函数"></a>4.函数</h3><h4 id="什么是函数？"><a href="#什么是函数？" class="headerlink" title="什么是函数？"></a><strong>什么是函数？</strong></h4><ul>
-<li>实现特定功能的n条语句的封装体</li>
-<li>只有函数是能执行的，其他类型的数据都不能执行</li>
-</ul>
-<h4 id="为什么要使用函数？"><a href="#为什么要使用函数？" class="headerlink" title="为什么要使用函数？"></a><strong>为什么要使用函数？</strong></h4><ul>
-<li>提高代码复用</li>
-<li>便于阅读交流（封装思想）</li>
-</ul>
-<h4 id="如何定义函数？"><a href="#如何定义函数？" class="headerlink" title="如何定义函数？"></a><strong>如何定义函数？</strong></h4><ul>
-<li>函数声明：function xx(){}</li>
-<li>表达式:var xx=function(){}</li>
-</ul>
-<h4 id="如何执行函数？"><a href="#如何执行函数？" class="headerlink" title="如何执行函数？"></a><strong>如何执行函数？</strong></h4><ul>
-<li>test()：直接调用</li>
-<li>obj.test()：通过对象调用</li>
-<li>new test():new调用</li>
-<li>test.call/apply(obj):让函数成为指定对象的方法进行调用</li>
-</ul>
-<h4 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h4><h5 id="什么函数才是回调函数？"><a href="#什么函数才是回调函数？" class="headerlink" title="什么函数才是回调函数？"></a><strong>什么函数才是回调函数？</strong></h5><ul>
-<li>自身定义的函数</li>
-<li>你没调用该函数，但该函数自动执行了</li>
-</ul>
-<h5 id="常见的回调函数"><a href="#常见的回调函数" class="headerlink" title="常见的回调函数"></a><strong>常见的回调函数</strong></h5><ul>
-<li>dom对象回调函数</li>
-<li>定时器回调函数（定时器:循环定时器、一次性定时器）</li>
-<li>ajax请求回调函数</li>
-<li>生命周期回调函数</li>
-</ul>
-<h4 id="IIFE（立即执行调用函数表达式）"><a href="#IIFE（立即执行调用函数表达式）" class="headerlink" title="IIFE（立即执行调用函数表达式）"></a><strong>IIFE（立即执行调用函数表达式）</strong></h4><p>匿名函数自调用</p>
-<p><code>( function()&#123;</code><br>    <code>var a=3;</code><br>    <code>console.log(a+3)</code><br><code>&#125;)()</code></p>
-<p>作用:</p>
-<p>​    实现隐藏</p>
-<p>​    不会污染外部（全局）命名空间</p>
-<h4 id="this"><a href="#this" class="headerlink" title="this"></a>this</h4><p><strong>什么是this?</strong></p>
+<li><p>要求:</p>
 <ul>
-<li>任何函数本质都是通过某个对象来调用的，如果没指定就是window对象调用</li>
-<li>所有函数内部都有一个变量this</li>
-<li>它的值是调用函数的当前对象</li>
+<li>类必须被public修饰</li>
+<li>必须提供空参的构造器</li>
+<li>成员变量必须使用private修饰</li>
+<li>提供公共的setter和getter方法</li>
 </ul>
-<p><strong>如何确定this值?</strong></p>
+</li>
+<li><p>功能：封装数据</p>
+</li>
+</ul>
+</li>
+<li><p>成员变量：</p>
+</li>
+<li><p>属性：setter和getter方法截取后的产物</p>
 <ul>
-<li>test()：window</li>
-<li>p.test()：p</li>
-<li>new est()：创建对象</li>
-<li>p.call(obj):obj</li>
+<li>例如：getUsername() –&gt; Username –&gt; username</li>
 </ul>
-<hr>
-<h1 id="函数高级"><a href="#函数高级" class="headerlink" title="函数高级"></a>函数高级</h1><h3 id="1-原型与原型链"><a href="#1-原型与原型链" class="headerlink" title="1.原型与原型链"></a>1.原型与原型链</h3><h4 id="原型（prototype）"><a href="#原型（prototype）" class="headerlink" title="原型（prototype）"></a>原型（prototype）</h4><p><strong>函数的prototype属性</strong></p>
-<ul>
-<li>每个函数都有prototype属性，它默认指向一个Object空对象(又称原型对象)</li>
-<li>原型对象中又一个属性constructor，它指向函数对象</li>
+</li>
 </ul>
-<p><strong>给原型对象添加方法</strong></p>
-<ul>
-<li>作用：函数的所有实例对象自动拥有原型中的属性(方法)</li>
+<h4 id="response入门"><a href="#response入门" class="headerlink" title="response入门"></a>response入门</h4><h5 id="功能："><a href="#功能：" class="headerlink" title="功能："></a>功能：</h5><ul>
+<li>设置响应消息</li>
+<li>设置响应行<ul>
+<li>格式：HTTP/1.1       200    OK</li>
+<li>设置状态码：setStatus(int sc)</li>
 </ul>
-<h4 id="显式原型与隐式原型"><a href="#显式原型与隐式原型" class="headerlink" title="显式原型与隐式原型"></a>显式原型与隐式原型</h4><p><code>function Fn() &#123;//内部语句this.prototype=&#123;&#125;</code><br><code>&#125;</code><br><code>var fn = new Fn();//内部语句:fn.__proto__=Fn.prototype</code></p>
-<ul>
-<li>每个函数都一个prototype，即显式原型（属性）</li>
+</li>
+<li>设置响应头：setHeader(String name,String value)</li>
+<li>设置响应体：<ul>
+<li>使用步骤：</li>
+<li>获取输出流<ul>
+<li>字符输出流：printWriter getWriter()</li>
+<li>字节输出流：ServletOutputStream getOutputStream()</li>
 </ul>
-<p><code>alert(Fn.prototype)</code></p>
-<ul>
-<li>每个实例对象都有一个__proto__，可称为隐式原型（属性）</li>
-<li>对象隐式原型的值为其对应构造函数的显式原型的值</li>
+</li>
+<li>使用输出流,将数据输出到客户端浏览器</li>
 </ul>
-<p><code>alert(fn.__proto__)</code></p>
-<h4 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h4><p>访问一个对象的属性时</p>
-<p>先在自身属性中查找查找，找到返回</p>
-<p>如果没有再沿着__proto__这条链往上找，找到返回</p>
-<p>如果最终没找到，返回undefined</p>
-<p>别名：隐式原型链</p>
-<p>作用：查找对象的属性（方法）</p>
-<p><strong>补充</strong></p>
-<p>函数的显式原型指向的对象默认是空Object实例对象(但Object不满足)</p>
-<p>所有函数都是Function的实例(包括Function对象)</p>
-<p>Object原型对象是原型链的尽头（原型对象的__proto__为null因此无法再进行查找）</p>
-<h3 id="2-执行上下文与执行上下文栈"><a href="#2-执行上下文与执行上下文栈" class="headerlink" title="2.执行上下文与执行上下文栈"></a>2.执行上下文与执行上下文栈</h3><h3 id="3-作用域和作用链域"><a href="#3-作用域和作用链域" class="headerlink" title="3.作用域和作用链域"></a>3.作用域和作用链域</h3><h3 id="4-闭包"><a href="#4-闭包" class="headerlink" title="4.闭包"></a>4.闭包</h3>
+</li>
+</ul>
+<h5 id="重定向"><a href="#重定向" class="headerlink" title="重定向:"></a>重定向:</h5><p><strong>实现:</strong></p>
+<ol>
+<li><p>设置状态码为302</p>
+</li>
+<li><p>设置响应头location</p>
+<p><strong>简单的重定向方法：sendRedirect(“资源路径”)</strong></p>
+</li>
+</ol>
+
                 
             </div>
             <hr/>
@@ -697,7 +648,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/06/22/javaScript%E7%AC%94%E8%AE%B0/">http://example.com/2021/06/22/javaScript%E7%AC%94%E8%AE%B0/</a>
+                    <a href="http://example.com/2021/06/29/request%E5%92%8Cresponse%E5%85%A5%E9%97%A8/">http://example.com/2021/06/29/request%E5%92%8Cresponse%E5%85%A5%E9%97%A8/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -734,11 +685,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">前端</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1049,62 +996,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/06/28/%E7%BC%96%E7%A8%8B%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E9%97%AE%E9%A2%98/">
+                <a href="/2021/06/29/request%E5%92%8Cresponse%E5%85%A5%E9%97%A8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="编程中遇到的一些小问题">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="request和response入门">
                         
-                        <span class="card-title">编程中遇到的一些小问题</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-28
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Sans
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%97%A5%E5%B8%B8/">
-                        <span class="chip bg-color">日常</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/16/%E5%90%8E%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="我的后端学习路线">
-                        
-                        <span class="card-title">我的后端学习路线</span>
+                        <span class="card-title">request和response入门</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1115,7 +1018,45 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Sans
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/06/28/HTTP%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="HTTP入门学习">
+                        
+                        <span class="card-title">HTTP入门学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-28
                             </span>
                         <span class="publish-author">
                             
@@ -1132,12 +1073,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/JAVA/">
-                        <span class="chip bg-color">JAVA</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BB%8F%E9%AA%8C/">
-                        <span class="chip bg-color">经验</span>
+                    <a href="/tags/%E7%BD%91%E7%BB%9C/">
+                        <span class="chip bg-color">网络</span>
                     </a>
                     
                 </div>
