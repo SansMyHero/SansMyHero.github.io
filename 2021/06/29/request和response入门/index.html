@@ -420,14 +420,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    916
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -622,6 +622,55 @@
 <p><strong>简单的重定向方法：sendRedirect(“资源路径”)</strong></p>
 </li>
 </ol>
+<p><strong>转发与重定向的区别</strong></p>
+<ul>
+<li><p>重定向的特点：redirect</p>
+<ul>
+<li>地址栏发生变化</li>
+<li>重定向可以访问其他站点（服务器）的资源</li>
+<li>重定向是两次请求。不能使用request共享数据</li>
+</ul>
+</li>
+<li><p>转发的特点：forward</p>
+<ul>
+<li>转发地址栏路径不变</li>
+<li>转发只能访问当前服务器下的资源</li>
+<li>转发是一次请求</li>
+</ul>
+</li>
+</ul>
+<h5 id="路径写法"><a href="#路径写法" class="headerlink" title="路径写法"></a><strong>路径写法</strong></h5><ul>
+<li>相对路径：通过相对路径不可以确定唯一资源<ul>
+<li>不以/开头，以.开头的路径</li>
+<li>规则：找到当前资源与目标资源之间的相对位置关系<ul>
+<li>./：当前目录</li>
+<li>../：后退一级目录</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>绝对路径：通过绝对路径可以确定唯一资源<ul>
+<li>以/开头的路径</li>
+<li>规则：判断定义的路径是给谁用的？判断请求从拿发出<ul>
+<li>给客户端浏览器使用：需加虚拟目录</li>
+<li>给服务器使用（转发）：不需要加虚拟目录</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="输出字符数据出现乱码问题"><a href="#输出字符数据出现乱码问题" class="headerlink" title="输出字符数据出现乱码问题"></a>输出字符数据出现乱码问题</h5><p>**原因:**浏览器解码的编码与tomcat获取流对象的编码不相同</p>
+<p><strong>解决:</strong></p>
+<ul>
+<li><p>使用setCharacterEncoding()将流对象的编码设置成与浏览器相同</p>
+<p>但此方法有局限性，因为浏览器编码会随着系统环境变化而变化</p>
+</li>
+<li><p>使用setHeader(“content-type”,”text/html;charset=utf-8”)</p>
+<p>告诉浏览器使用utf-8解码,来解决上述问题（设置了此项可以不用设置第一项）</p>
+</li>
+<li><p>使用setContentType()是上述方法的简写形式</p>
+</li>
+</ul>
 
                 
             </div>
@@ -1279,7 +1328,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">5k</span>
+                        class="white-color">5.4k</span>
             
             
             
