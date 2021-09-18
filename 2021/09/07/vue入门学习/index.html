@@ -424,14 +424,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    12 分
                 </div>
                 
 
@@ -589,7 +589,8 @@
 </ul>
 </li>
 </ul>
-<h4 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h4><p>格式：</p>
+<h4 id="自定义指令"><a href="#自定义指令" class="headerlink" title="自定义指令"></a>自定义指令</h4><p><strong>函数写法</strong></p>
+<p>格式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">directives:&#123;</span><br><span class="line">  big(element,binding)&#123;</span><br><span class="line">      return element.innerText = binding.value * 10</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>ps：element为真实DOM元素 binding为Vue绑定的相关属性</p>
@@ -597,6 +598,28 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;h2&gt;放大10倍之后的n值为:&lt;span v-big=&quot;n&quot;&gt;&lt;/span&gt;&lt;/h2&gt;</span><br></pre></td></tr></table></figure>
 
 <p>big函数调用： 1.指令与元素成功绑定时会调用  2.指令所在所在的模板被重新解析时</p>
+<p><strong>对象写法</strong></p>
+<p>格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">directives:&#123;</span><br><span class="line">  &#x27;f-bind&#x27;:&#123;</span><br><span class="line">    //指令与元素成功绑定时</span><br><span class="line">    bind(element,binding) &#123;</span><br><span class="line">      console.log(this);//this为window对象</span><br><span class="line">      element.value = binding.value</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    //指令所在元素被插入页面时</span><br><span class="line">    inserted(element,binding) &#123;</span><br><span class="line">      element.focus()</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    //指令所在模板被重新解析时</span><br><span class="line">    update(element,binding) &#123;</span><br><span class="line">      element.value = binding.value</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; v-f-bind:value=&quot;n&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<ul>
+<li>获取Vue绑定的属性值 修改文本框value值与之相等</li>
+<li>当真实DOM加载到页面时候 输入框获取焦点</li>
+<li>当指令所在模板被重新解析（data中的数据发生变化等等情况）时  重新获取Vue绑定的属性值 修改文本框value值与之相等</li>
+</ul>
+<h4 id="Vue的生命周期"><a href="#Vue的生命周期" class="headerlink" title="Vue的生命周期"></a>Vue的生命周期</h4><p><strong>生命周期概念</strong></p>
+<ol>
+<li>生命周期又叫 生命周期回调函数、生命周期函数、生命周期钩子</li>
+<li>Vue在关键时刻帮助我们调用一些特殊名称的函数</li>
+<li>生命周期函数的名称不可修改 当函数的具体内容可以按照需求编写</li>
+<li>在生命周期中的this指向的是vm 或 组件对象</li>
+</ol>
+<p><strong>生命周期的阶段</strong></p>
+<p><img src="/images/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png"></p>
 <h4 id="组件的基本使用"><a href="#组件的基本使用" class="headerlink" title="组件的基本使用"></a>组件的基本使用</h4><h5 id="局部组件"><a href="#局部组件" class="headerlink" title="局部组件"></a>局部组件</h5><p><strong>创建</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const school = Vue.extend(&#123;</span><br><span class="line">  template: `</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h2&gt;学校名称: &#123;&#123;school.name&#125;&#125;&lt;/h2&gt;</span><br><span class="line">    &lt;h2&gt;学校地址: &#123;&#123;school.address&#125;&#125;&lt;/h2&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  `,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      school:&#123;</span><br><span class="line">        name:&#x27;网院&#x27;,</span><br><span class="line">        address: &#x27;长沙&#x27;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
@@ -1330,7 +1353,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">9.6k</span>
+                        class="white-color">9.9k</span>
             
             
             
