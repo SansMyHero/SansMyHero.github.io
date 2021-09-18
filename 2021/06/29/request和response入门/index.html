@@ -413,21 +413,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-06-29
+                    2021-06-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    6 分
                 </div>
                 
 
@@ -669,6 +669,78 @@
 <p>告诉浏览器使用utf-8解码,来解决上述问题（设置了此项可以不用设置第一项）</p>
 </li>
 <li><p>使用setContentType()是上述方法的简写形式</p>
+</li>
+</ul>
+<h5 id="ServletContext对象"><a href="#ServletContext对象" class="headerlink" title="ServletContext对象"></a>ServletContext对象</h5><ul>
+<li><p>概念：代表整个web应用，可以和程序的容器（服务器）来通信</p>
+</li>
+<li><p>获取：</p>
+<ul>
+<li>通过request对象获取<ul>
+<li>request.getServletContext()</li>
+</ul>
+</li>
+<li>通过HttpServlet获取<ul>
+<li>this.getServletContext()</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>功能：</p>
+<ul>
+<li><p>获取MIME类型</p>
+<ul>
+<li>MIME类型：在网络通信过程中定义的一种文件数据类型<ul>
+<li>格式：大类型/小类型    text/html    image/jpg</li>
+</ul>
+</li>
+<li>获取：String getMimeType(String file)</li>
+</ul>
+</li>
+<li><p>域对象：共享数据</p>
+<ul>
+<li>setAttribute(String name,Object obj)：存储数据</li>
+<li>Object getAttribute(String name)：通过键获取数据</li>
+<li>removeAttribute(String name)：通过键名移除键值对</li>
+</ul>
+<p><strong>ServletContext对象范围：所有用户所有请求的数据</strong></p>
+</li>
+<li><p>获取文件的真实（服务器）路径</p>
+<ul>
+<li>方法：String getRealPath(String path)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="文件下载案例"><a href="#文件下载案例" class="headerlink" title="文件下载案例"></a><strong>文件下载案例</strong></h5><ul>
+<li><p>分析：</p>
+<ul>
+<li>超链接指向的资源如果能被浏览器解析，则在浏览器中显示，如果不能解析，则弹出下载提示框</li>
+<li>任何资源都必须弹出下载提示框</li>
+<li>使用响应头设置资源的打开方式：<ul>
+<li>Content-disposition:attachment;filename=xxx</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>步骤</p>
+<ul>
+<li>定义页面，编辑超链接href属性，指向Servlet同时将请求的资源名称传递过去</li>
+<li>定义Servlet <ul>
+<li>获取文件名称</li>
+<li>将文件使用字节输出流加载到内存中</li>
+<li>设置指定response的响应头：<ul>
+<li>Content-disposition:attachment;filename=xxx（ps:filename为下载时的文件名）</li>
+<li>content-type</li>
+</ul>
+</li>
+<li>将数据写出到response输出流</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>注意事项:设置中文下载名会出现乱码事件 因此需解决</p>
 </li>
 </ul>
 
@@ -1045,18 +1117,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/29/request%E5%92%8Cresponse%E5%85%A5%E9%97%A8/">
+                <a href="/2021/06/30/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AFcookie%E5%92%8Csession/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="request和response入门">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="会话技术cookie和session">
                         
-                        <span class="card-title">request和response入门</span>
+                        <span class="card-title">会话技术cookie和session</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1066,9 +1137,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-29
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-30
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1077,7 +1148,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%90%8E%E7%AB%AF/">
+                        <span class="chip bg-color">后端</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -1328,7 +1406,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">5.4k</span>
+                        class="white-color">5.7k</span>
             
             
             
