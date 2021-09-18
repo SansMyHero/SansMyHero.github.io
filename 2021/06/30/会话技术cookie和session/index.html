@@ -424,7 +424,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3
+                    175
                 </div>
                 
 
@@ -446,7 +446,36 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><p>概述：</p>
+                <h3 id="会话技术概念"><a href="#会话技术概念" class="headerlink" title="会话技术概念"></a>会话技术概念</h3><h4 id="概述："><a href="#概述：" class="headerlink" title="概述："></a>概述：</h4><ul>
+<li>​    会话：一次会话中包含多次请求和响应。<ul>
+<li>一次会话：浏览器第一次给服务器发送请求，会话建立，直到有一方断开（浏览器关闭或者服务器关闭）为止</li>
+</ul>
+</li>
+<li>功能：在一次会话的范围内的多次请求间，共享数据</li>
+<li>方式：<ul>
+<li>客户端会话技术：Cookie</li>
+<li>服务器端会话技术：Session</li>
+</ul>
+</li>
+</ul>
+<h3 id="Cookie"><a href="#Cookie" class="headerlink" title="Cookie"></a>Cookie</h3><h4 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h4><p>客户端会话技术，将数据保存到客户端</p>
+<h4 id="快速入门："><a href="#快速入门：" class="headerlink" title="快速入门："></a>快速入门：</h4><ul>
+<li>创建Cookie对象，绑定数据<ul>
+<li>new Cookie(String name,String value)</li>
+</ul>
+</li>
+<li>发送Cookie对象<ul>
+<li>HttpServletResponse对象有个addCookie()方法</li>
+</ul>
+</li>
+<li>接受Cookie对象<ul>
+<li><ul>
+<li>HttpServletRequest对象有个Cookie[] getCookies()方法获取Cookie数组</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -825,18 +854,17 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/30/%E4%BC%9A%E8%AF%9D%E6%8A%80%E6%9C%AFcookie%E5%92%8Csession/">
+                <a href="/2021/07/06/maven%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="会话技术cookie和session">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="maven笔记">
                         
-                        <span class="card-title">会话技术cookie和session</span>
+                        <span class="card-title">maven笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -846,9 +874,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-30
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-06
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -857,7 +885,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1104,7 +1131,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">5.7k</span>
+                        class="white-color">9.6k</span>
             
             
             
