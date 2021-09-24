@@ -417,21 +417,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-18
+                    2021-09-23
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3k
+                    3.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    15 分
                 </div>
                 
 
@@ -442,6 +442,11 @@
 
         
 
+        
+        <!-- 代码块折行 -->
+        <style type="text/css">
+            code[class*="language-"], pre[class*="language-"] { white-space: pre-wrap !important; }
+        </style>
         
 
         <div class="card-content article-card-content">
@@ -619,7 +624,7 @@
 <li>在生命周期中的this指向的是vm 或 组件对象</li>
 </ol>
 <p><strong>生命周期的阶段</strong></p>
-<p><img src="/images/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png"></p>
+<p><img src="/images/vue%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/life.png"></p>
 <h4 id="组件的基本使用"><a href="#组件的基本使用" class="headerlink" title="组件的基本使用"></a>组件的基本使用</h4><h5 id="局部组件"><a href="#局部组件" class="headerlink" title="局部组件"></a>局部组件</h5><p><strong>创建</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">const school = Vue.extend(&#123;</span><br><span class="line">  template: `</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h2&gt;学校名称: &#123;&#123;school.name&#125;&#125;&lt;/h2&gt;</span><br><span class="line">    &lt;h2&gt;学校地址: &#123;&#123;school.address&#125;&#125;&lt;/h2&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  `,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      school:&#123;</span><br><span class="line">        name:&#x27;网院&#x27;,</span><br><span class="line">        address: &#x27;长沙&#x27;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
@@ -646,7 +651,102 @@
 </ul>
 <h5 id="全局组件"><a href="#全局组件" class="headerlink" title="全局组件"></a>全局组件</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//全局注册组件</span><br><span class="line">Vue.component(&#x27;xuexiao&#x27;,school)/</span><br></pre></td></tr></table></figure>
 
+<h5 id="VueComponent"><a href="#VueComponent" class="headerlink" title="VueComponent"></a>VueComponent</h5><ul>
+<li><p>上述案例的xue-xiao本质就是VueComponent的构造函数，且不是程序定义的，是Vue.extend生成的。</p>
+</li>
+<li><p>我们只需要写<xue-xiao></xue-xiao>或者<xue-xiao> Vue解析时会帮我们创建school组件实例对象</xue-xiao></p>
+<p>即Vue帮我们执行：new VueComponent(options)</p>
+</li>
+<li><p>特别注意：每次调用Vue.extend，返回的都是一个全新的VueComponent</p>
+</li>
+<li><p>关于this指向：</p>
+<ul>
+<li>组件配置中：<ul>
+<li>data函数、methods中的函数、watch只的函数、computed中的函数 他们的this均是<strong>VueComponent实例对象</strong></li>
+</ul>
+</li>
+<li>new Vue()配置中：<ul>
+<li>data函数、methods中的函数、watch只的函数、computed中的函数 他们的this均是<strong>Vue实例对象</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>重要的内置关系</strong></p>
+<ul>
+<li>VueComponent.prototype.__proto === Vue.prototype</li>
+<li>作用：让组件可以访问到Vue原型中的属性和方法</li>
+</ul>
+<p><strong>脚手架中main.js中的render</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//将App作为真实DOM添加到页面中</span><br><span class="line">// render:h =&gt; h(App)</span><br><span class="line">//完整写法</span><br><span class="line">render:function (createElement) &#123;</span><br><span class="line">    return createElement(App)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>脚手架的vue不能解析template 因此需要render中的createElement来实现</p>
+<p>脚手架中使用残缺的Vue的原因：Vue项目交给webpack打包后模板解析器就无效了 因此为了提高性能使用残缺的Vue</p>
+<h4 id="ref属性"><a href="#ref属性" class="headerlink" title="ref属性"></a>ref属性</h4><p>作用：给html标签添加ref属性 可以通过$refs获取真实DOM属性  对真实DOM属性进行操作</p>
+<p>​            给组件标签添加ref属性 可以获取组件实例对象</p>
+<h4 id="props配置"><a href="#props配置" class="headerlink" title="props配置"></a>props配置</h4><p>作用:</p>
+<ol>
+<li><p>给子组件传递数据</p>
+<p>父组件传递参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;school :address=&quot;address&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>子组件获取传递参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//第一种方法获取传递参数</span><br><span class="line">// props:[&#x27;address&#x27;],</span><br><span class="line">//第二种方法获取传递参数</span><br><span class="line">props:&#123;</span><br><span class="line">  address:&#123;</span><br><span class="line">      type:String,</span><br><span class="line">      default：&#x27;&#x27;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure></li>
+<li><p>给通过函数从子组件获取数据    </p>
+</li>
+</ol>
+<p>ps：不建直接修改props里接收的数据 如需使用在data中定义个键来接收</p>
+<h4 id="混入"><a href="#混入" class="headerlink" title="混入"></a>混入</h4><p>…</p>
+<h4 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h4><p>…</p>
+<h4 id="自定义事件"><a href="#自定义事件" class="headerlink" title="自定义事件"></a>自定义事件</h4><h5 id="绑定"><a href="#绑定" class="headerlink" title="绑定"></a>绑定</h5><p>父组件定义一个名为showMessage的自定义事件 调用的方法为message</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;school ref=&quot;school&quot; v-on:showMessage=&quot;message&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>子组件创建一个按钮 点击时候调用sendMessage方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button @click=&quot;sendMessage&quot;&gt;点击传递message&lt;/button&gt;</span><br></pre></td></tr></table></figure>
+
+<p>子组件sendMessage方法 在调用时 通过$emit调用自定义事件showMessage 从而调用message方法 同时传递参数：’我叫张三 18岁 单身’</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sendMessage()&#123;</span><br><span class="line">    this.$emit(&#x27;showMessage&#x27;,&#x27;我叫张三 18岁 单身&#x27;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>父组件message方法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">message(str)&#123;</span><br><span class="line">  console.log(str)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>简写</strong></p>
+<p>在mounted中添加下述代码也能实现同样效果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$refs.school.$on(&#x27;showMessage&#x27;,this.message)</span><br></pre></td></tr></table></figure>
+
+<p><strong>更简写</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.$refs.school.$on(&#x27;getName&#x27;,(name) =&gt; &#123;</span><br><span class="line">  this.schoolName = name</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>箭头函数中的this是父组件 如果不用箭头函数<strong>this为事件调用对象</strong>子组件</p>
+<h5 id="解绑"><a href="#解绑" class="headerlink" title="解绑"></a>解绑</h5><p>在子组件中可以通过下述代码解绑自定义事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$off(&#x27;getName&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>解绑多个事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$off([&#x27;getName&#x27;,&#x27;getaddress&#x27;])</span><br></pre></td></tr></table></figure>
+
+<p>解绑全部事件</p>
+<p>this.$off()</p>
+<p><strong>给组件绑定原生事件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;school ref=&quot;school&quot; @click.native=&quot;show&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="全局事件总线"><a href="#全局事件总线" class="headerlink" title="全局事件总线"></a>全局事件总线</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$bus = this//安装全局事件总线</span><br></pre></td></tr></table></figure>
+
+<p>绑定自定义事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.$bus.$on(&#x27;hello&#x27;,(data) =&gt; &#123;</span><br><span class="line">  console.log(data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>触发自定义事件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$bus.$emit(&#x27;hello&#x27;,&#x27;张三&#x27;)</span><br></pre></td></tr></table></figure>
+
+<p>解绑自定义事件（一般beforeDestroy中销毁）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$bus.off(&#x27;hello&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="消息订阅与发布"><a href="#消息订阅与发布" class="headerlink" title="消息订阅与发布"></a>消息订阅与发布</h4><p><strong>pubsub</strong></p>
+<p>安装：npm i pubsub-js</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//订阅消息</span><br><span class="line">const pubId = pubsub.subscribe(&#x27;hello&#x27;,function (message) &#123;</span><br><span class="line">  console.log(message)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//发布消息</span><br><span class="line">pubsub.publish(&#x27;hello&#x27;,&#x27;message&#x27;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//取消订阅</span><br><span class="line">pubsub.unsubscribe(pubId)</span><br></pre></td></tr></table></figure>
 
 <h2 id="Vue概念"><a href="#Vue概念" class="headerlink" title="Vue概念"></a>Vue概念</h2><h3 id="Vue的MVVM"><a href="#Vue的MVVM" class="headerlink" title="Vue的MVVM"></a>Vue的MVVM</h3><p>M 模型(model) ：对应data中的数据</p>
 <p>V 视图(View) : 模板</p>
@@ -1353,7 +1453,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">9.9k</span>
+                        class="white-color">10.8k</span>
             
             
             
