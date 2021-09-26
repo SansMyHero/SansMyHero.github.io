@@ -417,7 +417,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-23
+                    2021-09-26
                 </div>
                 
 
@@ -431,7 +431,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    15 分
+                    16 分
                 </div>
                 
 
@@ -574,6 +574,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.filter(&#x27;toUp&#x27;,function (value) &#123;</span><br><span class="line">  return value.toUpperCase()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 
 <p>ps：过滤器可以用在插值语法和v-bind中</p>
+<p>ps：过滤器中的this是window</p>
 <h4 id="表单输入绑定"><a href="#表单输入绑定" class="headerlink" title="表单输入绑定"></a>表单输入绑定</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--双向绑定--&gt;</span><br><span class="line">&lt;span&gt;&#123;&#123;message&#125;&#125;&lt;/span&gt;&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; v-model=&quot;message&quot;&gt;</span><br></pre></td></tr></table></figure>
 
 <p>注意：绑定时单选框、复选框、下拉列表选框等 需要添加value值才能实现双向绑定 对复选框进行双向绑定时返回值为数组</p>
@@ -684,6 +685,10 @@
 <p>脚手架中使用残缺的Vue的原因：Vue项目交给webpack打包后模板解析器就无效了 因此为了提高性能使用残缺的Vue</p>
 <h4 id="ref属性"><a href="#ref属性" class="headerlink" title="ref属性"></a>ref属性</h4><p>作用：给html标签添加ref属性 可以通过$refs获取真实DOM属性  对真实DOM属性进行操作</p>
 <p>​            给组件标签添加ref属性 可以获取组件实例对象</p>
+<h4 id="nextTick方法"><a href="#nextTick方法" class="headerlink" title="$nextTick方法"></a>$nextTick方法</h4><p>使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">this.$nextTick(function () &#123;</span><br><span class="line">  this.$refs.edit.focus()</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>作用：在方法体运行完解析了一遍模板之后 再调用$nextTick内的函数方法</p>
 <h4 id="props配置"><a href="#props配置" class="headerlink" title="props配置"></a>props配置</h4><p>作用:</p>
 <ol>
 <li><p>给子组件传递数据</p>
