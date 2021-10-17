@@ -417,21 +417,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-09-26
+                    2021-10-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.9k
+                    5.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    16 分
+                    24 分
                 </div>
                 
 
@@ -753,7 +753,145 @@
 
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//取消订阅</span><br><span class="line">pubsub.unsubscribe(pubId)</span><br></pre></td></tr></table></figure>
 
-<h2 id="Vue概念"><a href="#Vue概念" class="headerlink" title="Vue概念"></a>Vue概念</h2><h3 id="Vue的MVVM"><a href="#Vue的MVVM" class="headerlink" title="Vue的MVVM"></a>Vue的MVVM</h3><p>M 模型(model) ：对应data中的数据</p>
+<h4 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a>动画效果</h4><p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;transition name=&quot;hello&quot; appear&gt;</span><br><span class="line">  &lt;h1 v-show=&quot;isShow&quot; &gt;你好啊!&lt;/h1&gt;</span><br><span class="line">&lt;/transition&gt;</span><br></pre></td></tr></table></figure>
+
+<p>样式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.hello-enter-active&#123;</span><br><span class="line">  animation: move linear 1s;</span><br><span class="line">&#125;</span><br><span class="line">.hello-leave-active&#123;</span><br><span class="line">  animation: move linear 1s reverse;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>class名为固定的格式 首位单词由name决定当没设置name时默认为v</p>
+<p>多个过度元素写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;transition-group name=&quot;hello&quot; appear&gt;</span><br><span class="line">  &lt;h1 v-show=&quot;isShow&quot; key=&quot;1&quot;&gt;你好啊!&lt;/h1&gt;</span><br><span class="line">  &lt;h1 v-show=&quot;!isShow&quot; key=&quot;2&quot;&gt;你好啊!&lt;/h1&gt;</span><br><span class="line">&lt;/transition-group&gt;</span><br></pre></td></tr></table></figure>
+
+<p>多个过渡元素要使用<strong>transition-group</strong>标签同时要给标签内元素指定key值</p>
+<h4 id="过渡效果"><a href="#过渡效果" class="headerlink" title="过渡效果"></a>过渡效果</h4><p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/*进入的起点*/</span><br><span class="line">/*离开的终点*/</span><br><span class="line">.hello-enter,.hello-leave-to&#123;</span><br><span class="line">  transform: translateX(-100%);</span><br><span class="line">&#125;</span><br><span class="line">/*进入过程*/</span><br><span class="line">/*离开过程*/</span><br><span class="line">.hello-enter-active,.hello-leave-active&#123;</span><br><span class="line">  transition: 0.5s linear;</span><br><span class="line">&#125;</span><br><span class="line">/*进入的终点*/</span><br><span class="line">/*离开的起点*/</span><br><span class="line">.hello-enter-to,.hello-leave&#123;</span><br><span class="line">  transform: translateX(0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用上述样式也能实现动画效果一样的效果</p>
+<h4 id="第三方集成库"><a href="#第三方集成库" class="headerlink" title="第三方集成库"></a>第三方集成库</h4><p>官网：<a target="_blank" rel="noopener" href="https://animate.style/">Animate.css | A cross-browser library of CSS animations.</a></p>
+<p>安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install animate.css --save</span><br></pre></td></tr></table></figure>
+
+<p>引用:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;animate.css&#x27;</span><br></pre></td></tr></table></figure>
+
+<p>使用:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;transition-group</span><br><span class="line">        name=&quot;animate__animated animate__bounce&quot;</span><br><span class="line">        appear</span><br><span class="line">        enter-active-class=&quot;animate__swing&quot;&gt;</span><br><span class="line">  &lt;h1 v-show=&quot;isShow&quot; key=&quot;1&quot;&gt;你好啊!&lt;/h1&gt;</span><br><span class="line">  &lt;h1 v-show=&quot;!isShow&quot; key=&quot;2&quot;&gt;你好啊!&lt;/h1&gt;</span><br><span class="line">&lt;/transition-group&gt;</span><br></pre></td></tr></table></figure>
+
+<p>name为固定写法</p>
+<h4 id="axios"><a href="#axios" class="headerlink" title="axios"></a>axios</h4><p><strong>安装：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i axios</span><br></pre></td></tr></table></figure>
+
+<p><strong>引入：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import axios from &#x27;axios&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>配置(在Vue配置文件中)：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">//开启代理服务器一</span><br><span class="line">// devServer:&#123;</span><br><span class="line">//   proxy:&#x27;http://localhost:4000&#x27;</span><br><span class="line">// &#125;,</span><br><span class="line">//开启代理服务器二</span><br><span class="line">devServer:&#123;</span><br><span class="line">  proxy:&#123;</span><br><span class="line">    &#x27;/atguigu&#x27;:&#123;</span><br><span class="line">      target:&#x27;http://localhost:5000&#x27;,//请求的接口地址</span><br><span class="line">      pathRewrite:&#123;&#x27;^/atguigu&#x27;:&#x27;&#x27;&#125;,//解决从接口中请求错路径的问题</span><br><span class="line">      ws:true,//用于websocket</span><br><span class="line">      changeOrigin:true//</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>devServer可以解决接口跨域无法访问问题</p>
+<p><strong>使用：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">getStudents()&#123;</span><br><span class="line">  axios.get(&#x27;http://localhost:8080/atguigu/students&#x27;).then(</span><br><span class="line">          response =&gt; &#123;</span><br><span class="line">            console.log(response.data)</span><br><span class="line">          &#125;,</span><br><span class="line">          error =&gt; &#123;</span><br><span class="line">            console.log(error.data)</span><br><span class="line">          &#125;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h4><h5 id="默认插槽"><a href="#默认插槽" class="headerlink" title="默认插槽"></a>默认插槽</h5><p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;category title=&quot;游戏&quot; &gt;</span><br><span class="line"> &lt;ul&gt;</span><br><span class="line">   &lt;li v-for=&quot;item in game&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;</span><br><span class="line"> &lt;/ul&gt;</span><br><span class="line">&lt;/category&gt;</span><br></pre></td></tr></table></figure>
+
+<p>组件内部：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;category&quot;&gt;</span><br><span class="line">    &lt;h3&gt;&#123;&#123;title&#125;&#125;分类&lt;/h3&gt;</span><br><span class="line">    &lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在组件内部添加slot标签 就能给组件添加一个插槽 当在组件标签体内写的全部html内容都会添加到slot标签内 实现插槽的效果</p>
+<p><strong>具名插槽</strong></p>
+<p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;category title=&quot;美食&quot; &gt;</span><br><span class="line"> &lt;div slot=&quot;first&quot;&gt;美食图片&lt;/div&gt;</span><br><span class="line"> &lt;div slot=&quot;second&quot;&gt;美食图片2&lt;/div&gt;</span><br><span class="line">&lt;/category&gt;</span><br></pre></td></tr></table></figure>
+
+<p>组件内部：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;category&quot;&gt;</span><br><span class="line">    &lt;h3&gt;&#123;&#123;title&#125;&#125;分类&lt;/h3&gt;</span><br><span class="line">    &lt;slot name=&quot;first&quot;&gt;&lt;/slot&gt;</span><br><span class="line">    &lt;slot name=&quot;second&quot;&gt;&lt;/slot&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>给组件内部的插槽添加一个name属性 再在组件标签内部的页面标签的slot属性中写入指定插槽的name就能实现具名插槽的效果</p>
+<h5 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h5><p>使用：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;category title=&quot;游戏&quot; &gt;</span><br><span class="line">  &lt;template scope=&quot;person&quot;&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">      &lt;li v-for=&quot;item in person.game&quot;&gt;&#123;&#123;item&#125;&#125;&lt;/li&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/category&gt;</span><br></pre></td></tr></table></figure>
+
+<p>组件内部：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;category&quot;&gt;</span><br><span class="line">    &lt;h3&gt;&#123;&#123;title&#125;&#125;分类&lt;/h3&gt;</span><br><span class="line">    &lt;slot :game=&quot;[&#x27;穿越火线&#x27;,&#x27;qq飞车&#x27;,&#x27;CFHD&#x27;,&#x27;csol&#x27;,&#x27;300英雄&#x27;]&quot;&gt;&lt;/slot&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+
+<p>作用域插槽能够在父组件中调用子组件中传递的属性 可以随意指定scope属性名</p>
+<p>ps：作用域插槽可以配合具名插槽使用 但不能配合插槽的新写法<code>v-slot:</code>使用</p>
+<h5 id="小细节"><a href="#小细节" class="headerlink" title="小细节"></a>小细节</h5><p>在调用具名插槽时如果使用html标签 会添加一个无用的标签 因此更推荐下面的写法不会引入新的标签</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;category title=&quot;美食&quot; &gt;</span><br><span class="line">  &lt;template slot=&quot;first&quot;&gt;</span><br><span class="line">    美食图片</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">  &lt;template v-slot:second&gt;</span><br><span class="line">    美食图片2</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/category&gt;</span><br></pre></td></tr></table></figure>
+
+<p>v-slot:second 为template的具名插槽特殊写法 效果和第一种一样（ps：vue3之后只支持这种插槽写法）</p>
+<h4 id="Vuex"><a href="#Vuex" class="headerlink" title="Vuex"></a>Vuex</h4><p>当多个组件需要共享同一个数据时可以采用Vuex</p>
+<h5 id="搭载Vuex环境"><a href="#搭载Vuex环境" class="headerlink" title="搭载Vuex环境"></a>搭载Vuex环境</h5><ol>
+<li>安装Vuex: npm i vuex</li>
+<li>在src目录下建立 store/index.js目录</li>
+<li>index.js内容为：</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">//该文件用于创建Vuex中最核心的store</span><br><span class="line">//导入Vuex</span><br><span class="line">import Vuex from &#x27;vuex&#x27;</span><br><span class="line">//导入Vue</span><br><span class="line">import Vue from &#x27;vue&#x27;</span><br><span class="line">//使用Vuex插件</span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line">//准备action(服务员)用于响应组件动作</span><br><span class="line"> const actions = &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line">  //准备mutations(厨师)用于操作数据(state)</span><br><span class="line">  const mutations = &#123;</span><br><span class="line"></span><br><span class="line"> &#125;</span><br><span class="line">  //准备state(菜品)用于存储数据</span><br><span class="line">  const state = &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //创建store</span><br><span class="line">  const store = new Vuex.Store(&#123;</span><br><span class="line">    actions,</span><br><span class="line">    mutations,</span><br><span class="line">    state</span><br><span class="line"></span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  //导出store</span><br><span class="line">  export default store</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>​    4.在main.js中导入store并使用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//导入store</span><br><span class="line">import store from &#x27;./store&#x27;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new Vue(&#123;</span><br><span class="line">    //绑定挂载点</span><br><span class="line">    el:&#x27;#root&#x27;,</span><br><span class="line">    store,</span><br><span class="line">    router,</span><br></pre></td></tr></table></figure>
+
+<h5 id="使用vuex"><a href="#使用vuex" class="headerlink" title="使用vuex"></a><strong>使用vuex</strong></h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">//准备action(服务员)用于响应组件动作</span><br><span class="line"> const actions = &#123;</span><br><span class="line">  jia(context,value)&#123;</span><br><span class="line">    console.log(&#x27;actions被调用&#x27;)</span><br><span class="line">    context.commit(&#x27;JIA&#x27;,value)</span><br><span class="line">  &#125;,</span><br><span class="line">  jian(context,value)&#123;</span><br><span class="line">     console.log(&#x27;actions被调用&#x27;)</span><br><span class="line">     context.commit(&#x27;JIAN&#x27;,value)</span><br><span class="line">  &#125;,</span><br><span class="line">   jiaOdd(context,value)&#123;</span><br><span class="line">     console.log(&#x27;actions被调用&#x27;)</span><br><span class="line">     if (context.state.sum % 2)&#123;</span><br><span class="line">       context.commit(&#x27;JIA&#x27;,value)</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;,</span><br><span class="line">   jiaWait(context,value)&#123;</span><br><span class="line">     console.log(&#x27;actions被调用&#x27;)</span><br><span class="line">     setTimeout(() =&gt; &#123;</span><br><span class="line">       context.commit(&#x27;JIA&#x27;,value)</span><br><span class="line">     &#125;,500)</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line">  //准备mutations(厨师)用于操作数据(state)</span><br><span class="line">  const mutations = &#123;</span><br><span class="line">    JIA(state,value)&#123;</span><br><span class="line">      console.log(&#x27;mutations被调用&#x27;)</span><br><span class="line">      state.sum += value</span><br><span class="line">    &#125;,</span><br><span class="line">    JIAN(state,value)&#123;</span><br><span class="line">      console.log(&#x27;mutations被调用&#x27;)</span><br><span class="line">      state.sum -= value</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在文件中调用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">decrement()&#123;</span><br><span class="line">  this.$store.commit(&#x27;JIAN&#x27;,this.addCount)</span><br><span class="line">&#125;,</span><br><span class="line">incrementOdd()&#123;</span><br><span class="line">  this.$store.dispatch(&#x27;jiaOdd&#x27;,this.addCount)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>commit方法是直接调用state中的数据</p>
+<p>dispatch方法是通过actions和mutations 对state中的数据进行操作</p>
+<h5 id="MapState和mapGetters"><a href="#MapState和mapGetters" class="headerlink" title="MapState和mapGetters"></a>MapState和mapGetters</h5><p>引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123;mapState,mapGette&#125; from &#x27;vuex&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>MapState</strong></p>
+<p>使用在computed中</p>
+<p>对象写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...mapState(&#123;getName:&#x27;name&#x27;,xuexiao:&#x27;school&#x27;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>数组简写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...mapState([&#x27;name&#x27;,&#x27;school&#x27;])</span><br></pre></td></tr></table></figure>
+
+<p>效果相当于计算属性中的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">getName()&#123;</span><br><span class="line">  return this.$store.state.name</span><br><span class="line">&#125;,</span><br><span class="line">xuexiao()&#123;</span><br><span class="line">  return  this.$store.state.school</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>mapGetters</strong></p>
+<p>使用在computed中</p>
+<p>对象写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...mapGetters(&#123;bigSum:&#x27;bigSum&#x27;&#125;),</span><br></pre></td></tr></table></figure>
+
+<p>数组简写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...mapGetters([&#x27;bigSum&#x27;]),</span><br></pre></td></tr></table></figure>
+
+<p>效果相当于计算属性中的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">bigSum()&#123;</span><br><span class="line">  return this.$store.getters.bigSum</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h5 id="mapAction和mapMutations"><a href="#mapAction和mapMutations" class="headerlink" title="mapAction和mapMutations"></a>mapAction和mapMutations</h5><p>引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import &#123;mapActions,mapMutations&#125; from &#x27;vuex&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>mapMutations</strong></p>
+<p>使用在methods中</p>
+<p>对象写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...mapMutations(&#123;increment:&#x27;JIA&#x27;,decrement:&#x27;JIAN&#x27;&#125;),</span><br></pre></td></tr></table></figure>
+
+<p>数组简写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...mapMutations([&#x27;JIA&#x27;,&#x27;JIAN&#x27;]),</span><br></pre></td></tr></table></figure>
+
+<p>对象写法效果相当于方法中的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">increment(value)&#123;</span><br><span class="line">  this.$store.commit(&#x27;JIA&#x27;,value)</span><br><span class="line">&#125;,</span><br><span class="line">decrement(value)&#123;</span><br><span class="line">  this.$store.commit(&#x27;JIAN&#x27;,value)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>因此在调用这些方法中要传递data参数 否则回将event传递到mutations中无法达到预期结果</p>
+<p><strong>mapAction</strong></p>
+<p>使用在methods中</p>
+<p>对象写法</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...mapActions(&#123;incrementOdd:&#x27;jiaOdd&#x27;,incrementWait:&#x27;jiaWait&#x27;&#125;),</span><br></pre></td></tr></table></figure>
+
+<p>数组简写</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">...mapActions([&#x27;jiaOdd&#x27;,&#x27;jiaWait&#x27;]),</span><br></pre></td></tr></table></figure>
+
+<p>对象写法效果相当于方法中的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">incrementOdd(value)&#123;</span><br><span class="line">  this.$store.dispatch(&#x27;jiaOdd&#x27;,value)</span><br><span class="line">&#125;,</span><br><span class="line">incrementWait(value)&#123;</span><br><span class="line">  this.$store.dispatch(&#x27;jiaWait&#x27;,value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意事项和mapMutations相同</p>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><h2 id="Vue概念"><a href="#Vue概念" class="headerlink" title="Vue概念"></a>Vue概念</h2><h3 id="Vue的MVVM"><a href="#Vue的MVVM" class="headerlink" title="Vue的MVVM"></a>Vue的MVVM</h3><p>M 模型(model) ：对应data中的数据</p>
 <p>V 视图(View) : 模板</p>
 <p>VM 视图模型 (ViewModel) : Vue实例对象</p>
 <p>VM负责的功能有:</p>
@@ -793,7 +931,7 @@
 <p><strong>对数组使用</strong></p>
 <p>Vue.set(将要替换元素的数组,索引值, 替换的值)</p>
 <p>除官网给出的</p>
-
+<h3 id="vuex工作原理"><a href="#vuex工作原理" class="headerlink" title="vuex工作原理"></a>vuex工作原理</h3>
                 
             </div>
             <hr/>
@@ -1458,7 +1596,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">10.8k</span>
+                        class="white-color">12.6k</span>
             
             
             
